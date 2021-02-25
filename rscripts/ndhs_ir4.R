@@ -13,12 +13,6 @@ setwd("C:/Users/dghimire/Dropbox (Personal)/nexus/blockchain")
 # available.packages()  # Returns a matrix of details corresponding to packages currently available at one or more repositories
 
 # ==============================================================================
-# install.packages("tidyverse")         # A collection of R packages designed for data science
-# install.packages("data.table")	# Extension of "data.frame"
-# install.packages("dtplyr")	        # provides a data.table backend for dplyr.
-# install.packages("labelled")	        # Manipulating Labelled Data Importing from haven or foreign packages
-# install.packages("sjlabelled")	# Labelled Data Utility Functions from SAS,SPSS, and Stata
-# install.packages("sjmisc")	        # Re-coding Variables
 # install.packages("DHS.rates")
 # ==============================================================================
 
@@ -59,11 +53,9 @@ ndhs_ir4$province <- rec(
         var.label = "Province",
         as.num = FALSE # we want a factor
 )
-frq(ndhs_ir4$province)
 ndhs_ir4$province <- factor(ndhs_ir4$province, levels=1:7, labels=lblProvince) # Create it
 levels(ndhs_ir4$province)
 frq(ndhs_ir4$province)
-flat_table(ndhs_ir4, province, residence) # Print crosstables with labels
 fct_unique(ndhs_ir4$province)
 # Generating Caste/Ethnicity Group
 lblEthnicity <- factor(c("Aryan", "Janjati", "Madhesi", "Dalit", "Muslim"))
@@ -74,7 +66,7 @@ ndhs_ir4$ethnicity <- rec(
         var.label = "Caste/Ethnicity",
         as.num = FALSE # we want a factor
 )
-frq(ndhs_ir4$ethnicity)
+
 ndhs_ir4$ethnicity <- factor(ndhs_ir4$ethnicity, levels=1:5, labels=lblEthnicity) # Create it
 levels(ndhs_ir4$ethnicity)
 frq(ndhs_ir4$ethnicity)
@@ -90,7 +82,7 @@ ndhs_ir4$education <- rec(
         var.label = "Educational Attainment",
         as.num = FALSE # we want a factor
 )
-frq(ndhs_ir4$education)
+
 ndhs_ir4$education <- factor(ndhs_ir4$education, ordered = TRUE, levels=1:6, labels=lblEducation) # Create it
 fct_unique(ndhs_ir4$education)
 frq(ndhs_ir4$education)
@@ -99,10 +91,10 @@ flat_table(ndhs_ir4, education, residence) # Print crosstables with labels
 
 # Computing Total Fertility Rate (TFR) and Age-Specific Fertility Rates (ASFR)
 # help(DHS.rates)
-TFR <- fert(ndhs_ir4,Indicator="tfr",JK="Yes")
+TFR4 <- fert(ndhs_ir4,Indicator="tfr",JK="Yes")
 # Sub-national indicators
-TFR <- fert(ndhs_ir4,Indicator="tfr",JK="Yes", Class="province")
+TFR4 <- fert(ndhs_ir4,Indicator="tfr",JK="Yes", Class="province")
 
-ASFR <- fert(ndhs_ir4,Indicator="asfr")
-ASFR <- fert(ndhs_ir4,Indicator="asfr", Class = "province")
+ASFR4 <- fert(ndhs_ir4,Indicator="asfr")
+ASFR4 <- fert(ndhs_ir4,Indicator="asfr", Class = "province")
 # ==============================================================================

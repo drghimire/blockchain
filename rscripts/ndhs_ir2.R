@@ -99,11 +99,10 @@ flat_table(ndhs_ir2, education, residence) # Print crosstables with labels
 
 # Computing total fertility rate
 # help(DHS.rates)
-TFR <- fert(ndhs_ir2,Indicator="tfr")
-TFR <- fert(ndhs_ir2,Indicator="tfr",JK="Yes")
+TFR2 <- fert(ndhs_ir2,Indicator="tfr",JK="Yes")
 # Sub-national indicators
-TFR <- fert(ndhs_ir2,Indicator="tfr",JK="Yes", Class="province")
+TFR2 <- fert(ndhs_ir2,Indicator="tfr",JK="Yes", Class="province")
 
-ASFR <- fert(ndhs_ir2,Indicator="asfr")
-ASFR <- fert(ndhs_ir2,Indicator="asfr", Class = "province")
+ASFR2 <- fert(ndhs_ir2,Indicator="asfr")
+ASFR2 <- fert(ndhs_ir2,Indicator="asfr", Class = "province")
 # ==============================================================================
